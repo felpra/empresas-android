@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.empresas_android.ui.SearchActivityViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/account_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
+        android:background="#ebe9d7">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/default_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:background="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/search_toolbar"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="77dp"
+            android:background="#979797"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/default_toolbar">
+
+            <ImageView
+                android:id="@+id/ioasys_logo"
+                android:layout_width="117.1dp"
+                android:layout_height="28.5dp"
+                android:layout_marginStart="121.1dp"
+                android:layout_marginEnd="121.1dp"
+                android:src="@drawable/logo_nav"
+                />
+
+            <EditText
+                android:id="@+id/searchEditText"
+                android:drawableStart="@drawable/ic_search_copy"
+                android:drawableEnd="@drawable/ic_close"
+                android:layout_marginStart="13dp"
+                android:layout_marginEnd="11.5dp"
+                android:onTextChanged="@{viewModel.onTextChanged}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                />
+
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <ImageButton
+            android:id="@+id/search_icon"
+            android:background="#979797"
+            android:layout_marginStart="318.5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search_copy"
+            android:onClick="@{() -> viewModel.onClickSearch()}"
+            app:layout_constraintLeft_toLeftOf="@+id/search_toolbar"
+            app:layout_constraintRight_toRightOf="@+id/search_toolbar"
+            app:layout_constraintTop_toTopOf="@+id/search_toolbar"
+            app:layout_constraintBottom_toBottomOf="@+id/search_toolbar"
+            />
+
+        <TextView
+            android:id="@+id/empty_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clique na busca para iniciar."
+            android:textColor="#383743"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_enterprise"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="18dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_toolbar"
+
+            />
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

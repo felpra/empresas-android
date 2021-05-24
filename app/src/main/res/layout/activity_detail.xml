@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/account_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
+        android:background="#ebe9d7">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/default_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:background="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/search_toolbar"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="77dp"
+            android:background="#979797"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/default_toolbar">
+
+            <TextView
+                android:id="@+id/enterprise_name"
+                android:layout_width="86dp"
+                android:layout_height="20dp"
+                android:textColor="#ffffff"
+                android:textSize="17sp"
+                android:fontFamily="sans-serif"
+                android:text="teste"
+                android:layout_marginStart="74.5dp"
+                android:layout_marginEnd="200dp"
+                />
+
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <ImageView
+            android:id="@+id/enterprise_image"
+            android:layout_width="318dp"
+            android:layout_height="155dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_toolbar"
+
+            />
+
+        <TextView
+            android:id="@+id/enterprise_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:textAlignment="center"
+            android:text="Clique na busca para iniciar."
+            android:textColor="#8d8c8c"
+            android:fontFamily="sans-serif"
+            android:textSize="17sp"
+            android:visibility="visible"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/enterprise_image"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
