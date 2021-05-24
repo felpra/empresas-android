@@ -30,9 +30,7 @@ class SessionManager (context: Context) {
         editor.commit()
     }
 
-    /**
-     * Function to fetch auth token
-     */
+
     fun fetchAuthToken(): String? {
         return prefs.getString(USER_TOKEN, null)
     }
