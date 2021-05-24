@@ -1,18 +1,17 @@
 package com.example.empresas_android.ui
 
 import android.app.Application
-import android.content.Context
 import android.content.Intent
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.empresas_android.Util.NetworkStatusUtil
 import com.example.empresas_android.api.ApiClient
 import com.example.empresas_android.model.LoginRequest
 import com.example.empresas_android.model.LoginResponse
 import com.example.empresas_android.session.SessionManager
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -29,20 +28,13 @@ class LoginActivityViewModel(application: Application) : AndroidViewModel(applic
     val startSearchActivity = MutableLiveData<Intent>()
     var emailEntryText = ""
     var passwordEntryText = ""
-    private val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-
-
-    private fun getNetworkStatus(): Boolean {
-        val networkCapabilities = connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
-        return networkCapabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) ?: false
-    }
-
+    var dispatcher: CoroutineDispatcher = Dispatchers.IO
 
     fun onClicklogin() {
         showLoading()
-        if (getNetworkStatus()) {
+        if (NetworkStatusUtil(context).getNetworkStatus()) {
             viewModelScope.launch {
-                withContext(Dispatchers.IO) {
+                withContext(dispatcher) {
                     connectToApi()
                 }
             }
